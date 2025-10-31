@@ -113,30 +113,96 @@ src/ui/FriendPanel.java
 src/data/User.java (friends 필드 추가)  
 src/manager/UserManager.java (친구 기능 메서드 추가)  
 
-⚙ 협업 규칙 (팀원용)
-1️⃣ 원격 브랜치 가져오기
+## 🧭 팀원 Git 사용 가이드 (처음부터 단계별 설명)
 
-리더가 만든 feature 브랜치를 로컬로 복사합니다.
+### 🪜 1️⃣ GitHub에서 프로젝트 내려받기 (Clone)
+
+리더가 만든 저장소 주소를 복사합니다.  
+(예시)  
+https://github.com/BK-chm/OOP-project.git
+
+이제 내 컴퓨터에 저장합니다 👇  
+git clone https://github.com/BK-chm/OOP-project.git
+→ 이 명령을 실행하면 OOP-project 폴더가 생깁니다.
+→ Visual Studio Code 또는 Eclipse에서 이 폴더를 열면 됩니다.
+
+🌿 2️⃣ 브랜치 목록 확인하기
+현재 어떤 브랜치가 있는지 확인합니다.
+
+git branch -a
+결과 예시:
+
+* main
+  dev
+  remotes/origin/feature/user-system
+  remotes/origin/feature/shop-system
+  remotes/origin/feature/purchase-system
+  remotes/origin/feature/review-system
+  remotes/origin/feature/friend-system
+💡 3️⃣ 본인 담당 브랜치로 이동하기
+예를 들어 “리뷰 시스템”을 담당한다면 👇
 
 git fetch origin
-git checkout feature/브랜치명
+git checkout feature/review-system
+다른 팀원 예시 👇
 
+역할	브랜치 명령어
+로그인/회원가입	git checkout feature/user-system
+상점/장바구니	git checkout feature/shop-system
+구매/라이브러리	git checkout feature/purchase-system
+리뷰	git checkout feature/review-system
+친구 기능	git checkout feature/friend-system
 
-예시:
+✏️ 4️⃣ 코드 수정 / 추가 후 저장
+작업 후 변경사항을 저장합니다 👇
 
-git checkout feature/shop-system
-
-2️⃣ 개발 후 커밋 & 푸시
 git add .
-git commit -m "Add ShopPanel and CartPanel basic UI"
-git push origin feature/shop-system
+git commit -m "Add ReviewManager save function"
+💡 commit 메시지는 영어로 짧고 명확하게 (무엇을 추가/수정했는지)
 
-3️⃣ Pull Request(PR) 생성
+🚀 5️⃣ 브랜치에 푸시하기 (업로드)
 
-GitHub 저장소 접속
+git push origin feature/review-system
+“review-system” 부분은 본인 담당 브랜치 이름으로 변경하세요.
+이 명령을 실행하면 팀 공용 GitHub에 코드가 올라갑니다.
 
-New Pull Request 클릭
+🔁 6️⃣ Pull Request(PR) 만들기
+GitHub 저장소 페이지로 이동
 
-base: dev ← compare: feature/본인브랜치 선택
+"Pull Requests" → "New Pull Request" 클릭
 
-설명 작성 후 Create Pull Request
+base: dev ← compare: feature/본인브랜치 로 설정
+
+제목과 내용을 간단히 입력
+
+Create Pull Request 클릭
+
+→ 리더가 코드 확인 후 dev로 병합합니다.
+
+🔄 7️⃣ 최신 코드 받기 (중요!)
+다른 팀원이 코드를 올린 뒤에는 꼭 dev를 최신으로 받아야 합니다 👇
+
+git checkout dev
+git pull origin dev
+그리고 내 브랜치로 돌아와 최신 변경사항을 반영합니다 👇
+
+git checkout feature/review-system
+git merge dev
+✅ 요약 정리
+단계	명령어	설명
+1️⃣	git clone <주소>	프로젝트 내려받기
+2️⃣	git branch -a	브랜치 목록 확인
+3️⃣	git checkout feature/기능명	본인 브랜치로 이동
+4️⃣	git add . / git commit -m "메시지"	변경사항 저장
+5️⃣	git push origin feature/기능명	코드 업로드
+6️⃣	GitHub → PR 생성	base: dev ← compare: feature/브랜치
+7️⃣	git pull origin dev / git merge dev	최신 코드 가져오기
+
+💬 핵심 요약
+
+✅ 새 브랜치는 만들지 않습니다.
+✅ 각자 본인 담당 feature 브랜치에서만 작업합니다.
+✅ 완료 후 Pull Request로 dev에 병합합니다.
+
+📈 작업 흐름
+feature/* → dev → main
