@@ -29,22 +29,22 @@ OOP-project/
 │ └── review.txt # 리뷰 데이터
 │
 └── src/
-├── util/ # 공통 유틸리티
+├── util/
 │ ├── Manageable.java
 │ └── Factory.java
 │
-├── data/ # 데이터 클래스
+├── data/
 │ ├── Game.java
 │ ├── User.java
 │ └── Review.java
 │
-├── manager/ # 기능별 관리 클래스
+├── manager/
 │ ├── ShopManager.java
 │ ├── UserManager.java
 │ ├── PurchaseManager.java
 │ └── ReviewManager.java
 │
-└── ui/ # Swing GUI
+└── ui/
 ├── MainFrame.java
 ├── LoginPanel.java
 ├── RegisterPanel.java
@@ -60,92 +60,54 @@ yaml
 
 ---
 
-## 🌿 브랜치 구조 및 포함 파일
+## 🌿 브랜치 구조 및 담당 기능
 
 main ← 최종 안정 버전
 └── dev ← 통합 개발 브랜치
-├── feature/user-system
-├── feature/shop-system
-├── feature/purchase-system
-├── feature/review-system
-└── feature/friend-system
+├── feature/user-system ← 로그인 / 회원가입 / 마이페이지
+├── feature/shop-system ← 상점 / 찜 / 장바구니
+├── feature/purchase-system ← 구매 / 라이브러리
+├── feature/review-system ← 리뷰 작성 / 출력
+└── feature/friend-system ← 친구 기능
 
 markdown
 코드 복사
 
-### 📦 `feature/user-system`
-> 로그인, 회원가입, 마이페이지 기능  
-**포함 파일:**
-src/data/User.java
-src/manager/UserManager.java
-src/ui/LoginPanel.java
-src/ui/RegisterPanel.java
-src/ui/MyPagePanel.java
-
-yaml
-코드 복사
+| 브랜치 | 담당 기능 | 주요 파일 |
+|--------|------------|------------|
+| `feature/user-system` | 로그인, 회원가입, 마이페이지 | `User.java`, `UserManager.java`, `LoginPanel.java`, `RegisterPanel.java`, `MyPagePanel.java` |
+| `feature/shop-system` | 상점, 찜, 장바구니 | `Game.java`, `ShopManager.java`, `ShopPanel.java`, `CartPanel.java`, `WishlistPanel.java` |
+| `feature/purchase-system` | 구매 및 라이브러리 | `PurchaseManager.java`, `LibraryPanel.java`, `purchase.txt` |
+| `feature/review-system` | 리뷰 작성 및 관리 | `Review.java`, `ReviewManager.java`, `review.txt` |
+| `feature/friend-system` | 친구 추가, 라이브러리 열람 | `FriendPanel.java`, `User.java(friends 필드)`, `UserManager.java(친구 기능 추가)` |
 
 ---
 
-### 🛒 `feature/shop-system`
-> 상점, 찜 목록, 장바구니 기능  
-**포함 파일:**
-src/data/Game.java
-src/manager/ShopManager.java
-src/ui/ShopPanel.java
-src/ui/CartPanel.java
-src/ui/WishlistPanel.java
+## ⚙ 팀원 협업 규칙 (브랜치 생성 X, 가져오기 O)
 
-yaml
-코드 복사
+### 🔹 1️⃣ 원격 브랜치 가져오기
+> 리더가 만들어둔 feature 브랜치를 로컬에 복사하는 과정입니다.
 
----
-
-### 💳 `feature/purchase-system`
-> 구매 및 라이브러리 관리  
-**포함 파일:**
-src/manager/PurchaseManager.java
-src/ui/LibraryPanel.java
-data/purchase.txt
-
-yaml
-코드 복사
-
----
-
-### 📝 `feature/review-system`
-> 리뷰 작성, 출력 및 관리  
-**포함 파일:**
-src/data/Review.java
-src/manager/ReviewManager.java
-data/review.txt
-
-yaml
-코드 복사
-
----
-
-### 👥 `feature/friend-system`
-> 친구 추가, 친구 라이브러리 열람  
-**포함 파일:**
-src/ui/FriendPanel.java
-src/data/User.java (friends 필드 추가)
-src/manager/UserManager.java (친구 기능 메서드 추가)
-
-yaml
-코드 복사
-
----
-
-## ⚙ 협업 규칙
-
-### 🔹 브랜치 생성
 ```bash
-git checkout dev
-git pull origin dev
-git checkout -b feature/기능명
-git push origin feature/기능명
-🔹 Pull Request(PR)
-방향: feature/* → dev
+# 최신 브랜치 정보 가져오기
+git fetch origin
 
-리더만 dev → main 병합 가능
+# 본인이 담당할 브랜치로 이동 (예: 리뷰 담당자)
+git checkout feature/review-system
+🔹 2️⃣ 로컬에서 개발 후 커밋 & 푸시
+bash
+코드 복사
+git add .
+git commit -m "Add ReviewManager logic"
+git push origin feature/review-system
+🔹 3️⃣ Pull Request (PR) 생성
+GitHub 저장소 접속
+
+New Pull Request 클릭
+
+base: dev ← compare: feature/본인브랜치
+
+설명 작성 후 Create Pull Request
+
+리더가 dev로 병합 후 테스트 완료 시 main에 최종 반영됩니다.
+
