@@ -55,9 +55,6 @@ OOP-project/
 ├── FriendPanel.java
 └── MyPagePanel.java
 
-yaml
-코드 복사
-
 ---
 
 ## 🌿 브랜치 구조 및 담당 기능
@@ -70,16 +67,37 @@ main ← 최종 안정 버전
 ├── feature/review-system ← 리뷰 작성 / 출력
 └── feature/friend-system ← 친구 기능
 
-markdown
-코드 복사
-
 | 브랜치 | 담당 기능 | 주요 파일 |
 |--------|------------|------------|
-| `feature/user-system` | 로그인, 회원가입, 마이페이지 | `User.java`, `UserManager.java`, `LoginPanel.java`, `RegisterPanel.java`, `MyPagePanel.java` |
-| `feature/shop-system` | 상점, 찜, 장바구니 | `Game.java`, `ShopManager.java`, `ShopPanel.java`, `CartPanel.java`, `WishlistPanel.java` |
-| `feature/purchase-system` | 구매 및 라이브러리 | `PurchaseManager.java`, `LibraryPanel.java`, `purchase.txt` |
-| `feature/review-system` | 리뷰 작성 및 관리 | `Review.java`, `ReviewManager.java`, `review.txt` |
-| `feature/friend-system` | 친구 추가, 라이브러리 열람 | `FriendPanel.java`, `User.java(friends 필드)`, `UserManager.java(친구 기능 추가)` |
+| `feature/user-system` | 로그인, 회원가입, 마이페이지 
+`User.java`, 
+`UserManager.java`, 
+`LoginPanel.java`, 
+`RegisterPanel.java`, 
+`MyPagePanel.java` 
+|
+| `feature/shop-system` | 상점, 찜, 장바구니 
+`Game.java`, 
+`ShopManager.java`, 
+`ShopPanel.java`, 
+`CartPanel.java`, 
+`WishlistPanel.java` 
+|
+| `feature/purchase-system` | 구매 및 라이브러리 
+`PurchaseManager.java`, 
+`LibraryPanel.java`, 
+`purchase.txt` 
+|
+| `feature/review-system` | 리뷰 작성 및 관리 
+`Review.java`, 
+`ReviewManager.java`, 
+`review.txt` 
+|
+| `feature/friend-system` | 친구 추가, 라이브러리 열람 
+`FriendPanel.java`, 
+`User.java(friends 필드)`, 
+`UserManager.java(친구 기능 추가)` 
+|
 
 ---
 
